@@ -81,9 +81,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sw) {
 
-        origin.setText(sw.getPlaceOfOrigin());
-        description.setText(sw.getDescription());
-
         StringBuilder ak = new StringBuilder();
         List<String> akList = sw.getAlsoKnownAs();
         for(String names : akList){
@@ -97,5 +94,8 @@ public class DetailActivity extends AppCompatActivity {
             ing.append(name).append("\n");
         }
         ingredients.setText(ing.toString());
+
+        origin.setText(sw.getPlaceOfOrigin());
+        description.setText(sw.getDescription());
     }
 }
