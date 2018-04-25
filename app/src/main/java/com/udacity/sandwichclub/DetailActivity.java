@@ -30,6 +30,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.origin_tv) TextView origin;
     @BindView(R.id.description_tv) TextView description;
     @BindView(R.id.ingredients_tv) TextView ingredients;
+    @BindView(R.id.image_iv) ImageView ingredientsIv;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -38,8 +39,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -96,6 +95,7 @@ public class DetailActivity extends AppCompatActivity {
         ingredients.setText(ing.toString());
 
         origin.setText(sw.getPlaceOfOrigin());
+
         description.setText(sw.getDescription());
     }
 }
