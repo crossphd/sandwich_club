@@ -29,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.also_known_tv) TextView alsoKnown;
     @BindView(R.id.origin_tv) TextView origin;
     @BindView(R.id.description_tv) TextView description;
+    @BindView(R.id.ingredients_tv) TextView ingredients;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -80,25 +81,21 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sw) {
 
+        origin.setText(sw.getPlaceOfOrigin());
+        description.setText(sw.getDescription());
+
         StringBuilder ak = new StringBuilder();
         List<String> akList = sw.getAlsoKnownAs();
         for(String names : akList){
             ak.append(names).append("\n");
         }
         alsoKnown.setText(ak.toString());
-        origin.setText(sw.getPlaceOfOrigin());
 
-
-        description.setText(sw.getDescription());
-
-        TextView ingredients = findViewById(R.id.ingredients_tv);
         StringBuilder ing = new StringBuilder();
         List<String> ingredientsList = sw.getIngredients();
         for(String name : ingredientsList){
             ing.append(name).append("\n");
         }
         ingredients.setText(ing.toString());
-
-
     }
 }
