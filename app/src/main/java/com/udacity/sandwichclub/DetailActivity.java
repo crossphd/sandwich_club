@@ -18,16 +18,25 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 import java.util.List;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+
+    @BindView(R.id.also_known_tv) TextView alsoKnown;
+    @BindView(R.id.origin_tv) TextView origin;
+    @BindView(R.id.description_tv) TextView description;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -71,18 +80,15 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sw) {
 
-        TextView alsoKnown = findViewById(R.id.also_known_tv);
         StringBuilder ak = new StringBuilder();
         List<String> akList = sw.getAlsoKnownAs();
         for(String names : akList){
             ak.append(names).append("\n");
         }
         alsoKnown.setText(ak.toString());
-
-        TextView origin = findViewById(R.id.origin_tv);
         origin.setText(sw.getPlaceOfOrigin());
 
-        TextView description = findViewById(R.id.description_tv);
+
         description.setText(sw.getDescription());
 
         TextView ingredients = findViewById(R.id.ingredients_tv);
